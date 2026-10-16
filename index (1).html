@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Deals Hub | Best Offers & Coupon Codes</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--text:#16181d;--muted:#6b7280;--line:#e5e7eb;--accent:#ff5a1f;--accent2:#ffb703;--ok:#16a34a}
+@media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#181b22;--text:#eceef2;--muted:#9aa1ad;--line:#2a2f3a}}
+*{box-sizing:border-box;margin:0}
+body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+.notice{background:var(--accent);color:#fff;font-size:13px;text-align:center;padding:8px 12px}
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.top{display:flex;align-items:center;gap:16px;padding:12px 0;flex-wrap:wrap}
+.logo{font-weight:800;font-size:22px;color:var(--accent)}
+.logo span{color:var(--text)}
+.search{flex:1;min-width:200px;display:flex}
+.search input{flex:1;padding:10px 14px;border:2px solid var(--accent);border-radius:999px;background:var(--bg);color:var(--text);font-size:14px;outline:none}
+.cats{display:flex;gap:8px;overflow-x:auto;padding:0 0 10px;scrollbar-width:none}
+.cats a{white-space:nowrap;font-size:13px;font-weight:600;padding:6px 14px;border-radius:999px;border:1px solid var(--line);background:var(--bg)}
+.cats a:hover{border-color:var(--accent);color:var(--accent)}
+.hero{margin:20px 0;padding:36px 24px;border-radius:18px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff}
+.hero h1{font-size:clamp(24px,4vw,40px);margin-bottom:6px}
+.hero p{max-width:560px;opacity:.95}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px;margin:0 0 8px}
+.tile{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 8px;text-align:center;font-size:13px;font-weight:600}
+.tile b{display:block;font-size:26px;margin-bottom:4px}
+.tile:hover{border-color:var(--accent);transform:translateY(-2px);transition:.15s}
+section{margin:34px 0;scroll-margin-top:130px}
+.sh{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:12px;border-left:5px solid var(--accent);padding-left:10px}
+.sh h2{font-size:22px}
+.sh small{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative}
+.card .img{aspect-ratio:4/3;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:44px;overflow:hidden}
+.card .img img{width:100%;height:100%;object-fit:cover}
+.badge{position:absolute;top:10px;left:10px;background:#dc2626;color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
+.body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
+.title{font-weight:600;font-size:15px}
+.price{display:flex;gap:8px;align-items:baseline}
+.price b{font-size:20px;color:var(--accent)}
+.price s{color:var(--muted);font-size:13px}
+.coupon{border:1px dashed var(--accent);background:transparent;color:var(--accent);font-weight:700;font-size:13px;padding:6px 10px;border-radius:8px;cursor:pointer}
+.cta{margin-top:auto;display:block;text-align:center;background:var(--accent);color:#fff;font-weight:700;padding:10px;border-radius:10px}
+.cta:hover{filter:brightness(1.08)}
+.empty{border:2px dashed var(--line);background:transparent;align-items:center;justify-content:center;text-align:center;min-height:250px;color:var(--muted);padding:20px;font-size:14px}
+.empty b{display:block;font-size:30px;margin-bottom:4px}
+.none{display:none;text-align:center;color:var(--muted);padding:40px 0}
+footer{margin-top:50px;border-top:1px solid var(--line);background:var(--card);padding:24px 0;color:var(--muted);font-size:12px;text-align:center}
+
+.band{margin:44px 0;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px}
+.band h2{font-size:22px;margin-bottom:4px}
+.band>p{color:var(--muted);font-size:14px;margin-bottom:14px}
+.social{display:flex;flex-wrap:wrap;gap:10px}
+.social a{padding:10px 18px;border-radius:999px;font-weight:700;font-size:14px;color:#fff}
+.s-fb{background:#1877f2}.s-ig{background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)}.s-tg{background:#229ed9}.s-pin{background:#e60023}
+form.f{display:grid;gap:10px;max-width:520px}
+form.f input,form.f textarea,form.f select{padding:11px 12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:inherit;width:100%}
+form.f label.c{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:var(--muted)}
+form.f label.c input{width:auto;margin-top:3px}
+form.f button{background:var(--accent);color:#fff;border:0;border-radius:10px;padding:12px;font-weight:700;font-size:15px;cursor:pointer}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+@media(max-width:760px){.two{grid-template-columns:1fr}}
+.rv{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px;background:var(--bg)}
+.rv .st{color:var(--accent2);letter-spacing:2px}
+.rv small{color:var(--muted)}
+.hp{position:absolute;left:-9999px}
+</style>
+</head>
+<body>
+
+<div class="notice">Affiliate disclosure: some links on this site are affiliate links. If you buy through them we may earn a commission at no extra cost to you.</div>
+
+<header>
+  <div class="wrap">
+    <div class="top">
+      <a href="#" class="logo">Global<span>Deals</span></a>
+      <div class="search"><input id="q" type="search" placeholder="Search deals, brands, coupon codes..."></div>
+    </div>
+    <nav class="cats" id="nav"></nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1>Best online deals, in one place</h1>
+    <p>Hand-picked offers and coupon codes across electronics, fashion, accessories and more.</p>
+  </div>
+  <div class="tiles" id="tiles"></div>
+  <div id="sections"></div>
+  <div class="none" id="none">No deals match your search.</div>
+
+  <!-- FOLLOW US -->
+  <div class="band" id="follow">
+    <h2>Follow us for daily deals</h2>
+    <p>Get new offers and coupon codes first. Replace each # with your own page link.</p>
+    <div class="social">
+      <a class="s-fb" href="#" target="_blank" rel="noopener">Facebook</a>
+      <a class="s-ig" href="#" target="_blank" rel="noopener">Instagram</a>
+      <a class="s-tg" href="#" target="_blank" rel="noopener">Telegram</a>
+      <a class="s-pin" href="#" target="_blank" rel="noopener">Pinterest</a>
+    </div>
+  </div>
+
+  <!-- REVIEWS + NEWSLETTER -->
+  <div class="two">
+    <div class="band" id="reviews" style="margin:0">
+      <h2>Customer reviews</h2>
+      <p>Only real reviews from real visitors. Tell us about a deal you used.</p>
+      <div id="rvlist"></div>
+      <form class="f" name="review" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="review">
+        <p class="hp"><label>Leave empty <input name="bot-field"></label></p>
+        <input name="name" placeholder="Your first name" required>
+        <select name="rating" required>
+          <option value="">Rating</option>
+          <option value="5">5 - Excellent</option><option value="4">4 - Good</option>
+          <option value="3">3 - OK</option><option value="2">2 - Poor</option><option value="1">1 - Bad</option>
+        </select>
+        <textarea name="message" rows="3" placeholder="Your honest experience" required></textarea>
+        <label class="c"><input type="checkbox" name="honest" required> I confirm this review is my own honest experience. It may be published after approval.</label>
+        <button type="submit">Send review</button>
+      </form>
+    </div>
+
+    <div class="band" id="subscribe" style="margin:0">
+      <h2>Get deals by email</h2>
+      <p>New offers and coupon codes. No spam, unsubscribe anytime.</p>
+      <form class="f" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="newsletter">
+        <p class="hp"><label>Leave empty <input name="bot-field"></label></p>
+        <input type="email" name="email" placeholder="Your email" required>
+        <label class="c"><input type="checkbox" name="consent_email" required> I agree to receive deal emails and I can unsubscribe at any time.</label>
+        <input type="tel" name="phone" placeholder="Phone (optional, for text alerts)">
+        <label class="c"><input type="checkbox" name="consent_sms"> I agree to receive text messages with deals at this number. Message and data rates may apply. Reply STOP to opt out.</label>
+        <button type="submit">Subscribe</button>
+        <small style="color:var(--muted)">We use your details only to send you deals. We never sell them. See our privacy policy.</small>
+      </form>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap">&copy; 2026 Global Deals Hub. Prices and availability may change; check the store for the final price.<br>
+  We are not the store. We link to third-party shops and may earn commissions from qualifying purchases.</div>
+</footer>
+
+<script>
+/* ============================================================
+   1) CATEGORIES: add / remove / rename as you like
+   ============================================================ */
+const CATEGORIES = [
+  {id:"electronics", name:"Electronics",       icon:"📱"},
+  {id:"fashion",     name:"Clothing & Fashion", icon:"👗"},
+  {id:"accessories", name:"Accessories",        icon:"👜"},
+  {id:"jewelry",     name:"Jewelry",            icon:"💍"},
+  {id:"home",        name:"Home & Kitchen",     icon:"🏠"},
+  {id:"beauty",      name:"Beauty & Health",    icon:"💄"},
+  {id:"sports",      name:"Sports & Outdoor",   icon:"⚽"},
+  {id:"toys",        name:"Toys & Kids",        icon:"🧸"}
+];
+
+/* ============================================================
+   2) OFFERS now live in data/offers.json.
+   Add / edit them from yoursite.netlify.app/admin
+   ============================================================ */
+const SLOTS_PER_CATEGORY = 4;   // minimum boxes shown per category
+let OFFERS = {};                 // loaded from data/offers.json (edit it from /admin)
+
+/* ============================================================
+   Rendering code (no need to edit below)
+   ============================================================ */
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function offerCard(o, icon){
+  const img = o.image ? `<img src="${esc(o.image)}" alt="${esc(o.title)}" loading="lazy">` : icon;
+  return `<article class="card" data-s="${esc((o.title+" "+(o.coupon||"")).toLowerCase())}">
+    ${o.badge ? `<span class="badge">${esc(o.badge)}</span>` : ""}
+    <div class="img">${img}</div>
+    <div class="body">
+      <div class="title">${esc(o.title)}</div>
+      <div class="price">${o.price ? `<b>${esc(o.price)}</b>` : ""}${o.oldPrice ? `<s>${esc(o.oldPrice)}</s>` : ""}</div>
+      ${o.coupon ? `<button class="coupon" data-code="${esc(o.coupon)}">Copy code: ${esc(o.coupon)}</button>` : ""}
+      <a class="cta" href="${esc(o.link || "#")}" target="_blank" rel="sponsored noopener">Get this deal &rarr;</a>
+    </div>
+  </article>`;
+}
+
+function emptyCard(){
+  return `<div class="card empty" data-empty="1"><div><b>＋</b>Your offer here</div></div>`;
+}
+
+function render(){
+  const nav = document.getElementById("nav");
+  const tiles = document.getElementById("tiles");
+  const sections = document.getElementById("sections");
+  nav.innerHTML = CATEGORIES.map(c => `<a href="#${c.id}">${c.icon} ${esc(c.name)}</a>`).join("");
+  tiles.innerHTML = CATEGORIES.map(c => `<a class="tile" href="#${c.id}"><b>${c.icon}</b>${esc(c.name)}</a>`).join("");
+  sections.innerHTML = CATEGORIES.map(c => {
+    const list = OFFERS[c.id] || [];
+    const total = Math.max(SLOTS_PER_CATEGORY, list.length);
+    let html = "";
+    for(let i = 0; i < total; i++) html += list[i] ? offerCard(list[i], c.icon) : emptyCard();
+    return `<section id="${c.id}">
+      <div class="sh"><h2>${c.icon} ${esc(c.name)}</h2><small>${list.length} offer${list.length === 1 ? "" : "s"}</small></div>
+      <div class="grid">${html}</div>
+    </section>`;
+  }).join("");
+}
+fetch("data/offers.json").then(r => r.json()).then(d => {
+  (d.offers || []).forEach(o => { (OFFERS[o.category] = OFFERS[o.category] || []).push(o); });
+}).catch(() => {}).finally(render);
+
+/* Copy coupon */
+document.addEventListener("click", e => {
+  const b = e.target.closest(".coupon");
+  if(!b) return;
+  const code = b.dataset.code;
+  const done = () => { b.textContent = "Copied! " + code; setTimeout(() => b.textContent = "Copy code: " + code, 2000); };
+  if(navigator.clipboard) navigator.clipboard.writeText(code).then(done, done);
+  else { const t = document.createElement("textarea"); t.value = code; document.body.appendChild(t); t.select(); try{document.execCommand("copy")}catch(_){} t.remove(); done(); }
+});
+
+/* Search */
+document.getElementById("q").addEventListener("input", e => {
+  const q = e.target.value.trim().toLowerCase();
+  let shown = 0;
+  document.querySelectorAll("section").forEach(sec => {
+    let secShown = 0;
+    sec.querySelectorAll(".card").forEach(card => {
+      const isEmpty = card.dataset.empty === "1";
+      const ok = q ? (!isEmpty && card.dataset.s.includes(q)) : true;
+      card.style.display = ok ? "" : "none";
+      if(ok && !isEmpty) secShown++;
+    });
+    sec.style.display = (q && !secShown) ? "none" : "";
+    shown += secShown;
+  });
+  document.getElementById("none").style.display = (q && !shown) ? "block" : "none";
+});
+
+/* ============================================================
+   3) REVIEWS: paste only REAL, approved reviews here
+   (you see new ones in Netlify > Forms > review)
+   ============================================================ */
+const REVIEWS = [
+  /* { name:"John", rating:5, text:"Used the code, it worked.", date:"Oct 2026" }, */
+];
+(function(){
+  const el = document.getElementById("rvlist");
+  el.innerHTML = REVIEWS.length
+    ? REVIEWS.map(r => `<div class="rv"><div class="st">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</div><div>${esc(r.text)}</div><small>${esc(r.name)} · ${esc(r.date||"")}</small></div>`).join("")
+    : `<div class="rv"><small>No reviews yet. Be the first to share your experience.</small></div>`;
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+backend:
+  name: github
+  repo: YOUR_GITHUB_USERNAME/YOUR_REPO_NAME   # <- change this
+  branch: main
+
+media_folder: uploads
+public_folder: /uploads
+
+collections:
+  - name: offers
+    label: Offers
+    files:
+      - name: offers
+        label: All offers
+        file: data/offers.json
+        fields:
+          - label: Offers
+            name: offers
+            widget: list
+            summary: "{{fields.category}} - {{fields.title}}"
+            fields:
+              - { label: Category, name: category, widget: select, options: [
+                  { label: Electronics, value: electronics },
+                  { label: Clothing & Fashion, value: fashion },
+                  { label: Accessories, value: accessories },
+                  { label: Jewelry, value: jewelry },
+                  { label: Home & Kitchen, value: home },
+                  { label: Beauty & Health, value: beauty },
+                  { label: Sports & Outdoor, value: sports },
+                  { label: Toys & Kids, value: toys } ] }
+              - { label: Title, name: title, widget: string }
+              - { label: Photo, name: image, widget: image, required: false }
+              - { label: Price, name: price, widget: string, required: false }
+              - { label: Old price, name: oldPrice, widget: string, required: false }
+              - { label: Coupon code, name: coupon, widget: string, required: false }
+              - { label: Badge (ex 20% OFF), name: badge, widget: string, required: false }
+              - { label: Affiliate link, name: link, widget: string }
