@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Global Deals Hub | Best Offers & Coupon Codes</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Deals Hub | Best Offers & Coupon Codes</title>
+
+    <!-- وسم Pinterest الصحيح -->
+    <meta name="p:domain_verify" content="8446b3c175c5d81958ac3ee3eeb019dd"/>
+
+    <style>
 :root{--bg:#f6f7f9;--card:#fff;--text:#16181d;--muted:#6b7280;--line:#e5e7eb;--accent:#ff5a1f;--accent2:#ffb703;--ok:#16a34a}
 @media (prefers-color-scheme:dark){:root{--bg:#0f1115;--card:#181b22;--text:#eceef2;--muted:#9aa1ad;--line:#2a2f3a}}
 *{box-sizing:border-box;margin:0}
@@ -164,11 +168,27 @@ const CATEGORIES = [
 ];
 
 /* ============================================================
-   2) OFFERS now live in data/offers.json.
-   Add / edit them from yoursite.netlify.app/admin
+   2) OFFERS: put your offers here, under the right category.
+   Every field is optional except title and link.
+   Empty slots stay as dashed "Your offer here" boxes.
    ============================================================ */
 const SLOTS_PER_CATEGORY = 4;   // minimum boxes shown per category
-let OFFERS = {};                 // loaded from data/offers.json (edit it from /admin)
+
+const OFFERS = {
+  jewelry: [
+    {
+      title: "Italo Jewelry 5-Stone Cushion Cut Ring",
+      image: "https://i.imgur.com/Xo0OQrU.png",
+      price: "$144.00", oldPrice: "$180.00",
+      coupon: "ADMITAD20", badge: "20% OFF",
+      link: "https://fas.st/65-ssB"
+    }
+  ],
+  electronics: [
+    /* { title:"", image:"", price:"", oldPrice:"", coupon:"", badge:"", link:"" }, */
+  ],
+  fashion: [], accessories: [], home: [], beauty: [], sports: [], toys: []
+};
 
 /* ============================================================
    Rendering code (no need to edit below)
@@ -210,9 +230,7 @@ function render(){
     </section>`;
   }).join("");
 }
-fetch("data/offers.json").then(r => r.json()).then(d => {
-  (d.offers || []).forEach(o => { (OFFERS[o.category] = OFFERS[o.category] || []).push(o); });
-}).catch(() => {}).finally(render);
+render();
 
 /* Copy coupon */
 document.addEventListener("click", e => {
