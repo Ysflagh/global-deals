@@ -39,7 +39,7 @@ section{margin:34px 0;scroll-margin-top:130px}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px}
 .card{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;position:relative}
 .card .img{aspect-ratio:4/3;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:44px;overflow:hidden}
-.card .img img{width:100%;height:100%;object-fit:cover}
+.card .img img{width:100%;height:100%;object-fit:cover;font-size:14px}
 .badge{position:absolute;top:10px;left:10px;background:#dc2626;color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px}
 .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:8px;flex:1}
 .title{font-weight:600;font-size:15px}
@@ -196,7 +196,7 @@ const OFFERS = {
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
 function offerCard(o, icon){
-  const img = o.image ? `<img src="${esc(o.image)}" alt="${esc(o.title)}" loading="lazy">` : icon;
+  const img = o.image ? `<img src="${esc(o.image)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode('${icon}'))">` : icon;
   return `<article class="card" data-s="${esc((o.title+" "+(o.coupon||"")).toLowerCase())}">
     ${o.badge ? `<span class="badge">${esc(o.badge)}</span>` : ""}
     <div class="img">${img}</div>
