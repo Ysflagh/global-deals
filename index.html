@@ -7,6 +7,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23ff5a1f'/%3E%3Cpath d='M19 34l9 9 17-21' stroke='white' stroke-width='7' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta name="theme-color" content="#0a0b1e">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Global Deals Hub | Best Offers & Coupon Codes">
+<meta property="og:description" content="Hand-picked online deals and coupon codes in one place.">
+<meta name="twitter:card" content="summary">
 <style>
 :root{--bg:#0a0b1e;--card:rgba(255,255,255,.06);--line:rgba(255,255,255,.12);--text:#f3f4ff;--muted:#a3a7c7;--a1:#ff5a1f;--a2:#ffb703;--a3:#7c5cff;--a4:#22d3ee;--grad:linear-gradient(120deg,#ff5a1f,#ffb703)}
 *{box-sizing:border-box;margin:0}
@@ -118,6 +124,44 @@ body.catpage .sh h2{font-size:30px}
 .rvbox{max-height:340px;overflow-y:auto;padding-right:4px;margin-bottom:6px}
 .rv small{color:var(--muted)}
 .rv>div:nth-child(2){margin:4px 0}
+.bg{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+.bg i{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;animation:drift 18s ease-in-out infinite alternate}
+.bg i:nth-child(1){width:420px;height:420px;background:#7c5cff;left:-100px;top:10%}
+.bg i:nth-child(2){width:360px;height:360px;background:#ff5a1f;right:-80px;top:38%;animation-delay:-6s}
+.bg i:nth-child(3){width:380px;height:380px;background:#22d3ee;left:30%;bottom:-140px;animation-delay:-12s;opacity:.32}
+@keyframes drift{to{transform:translate(60px,-80px) scale(1.15)}}
+svg{stroke-linecap:round;stroke-linejoin:round}
+.tile .ti{display:grid;place-items:center;width:54px;height:54px;margin:0 auto 10px;border-radius:17px;background:linear-gradient(135deg,#7c5cff,#22d3ee);box-shadow:0 10px 22px -10px rgba(124,92,255,.9)}
+.tile:nth-child(even) .ti{background:linear-gradient(135deg,#ff5a1f,#ffb703);box-shadow:0 10px 22px -10px rgba(255,90,31,.9)}
+.ti svg{width:28px;height:28px;color:#fff;stroke-width:1.8}
+.hi{display:inline-grid;place-items:center;width:36px;height:36px;margin-right:10px;border-radius:11px;background:var(--grad);vertical-align:middle}
+.hi svg{width:20px;height:20px;color:#1a1020;stroke-width:2}
+.ni svg{width:15px;height:15px;margin-right:6px;vertical-align:-2px;stroke-width:2}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:0 0 46px;counter-reset:st}
+.step{position:relative;padding:22px 18px 20px;border-radius:20px;border:1px solid var(--line);background:var(--card);text-align:center;transition:.3s}
+.step:hover{transform:translateY(-5px);border-color:var(--a2)}
+.step::before{counter-increment:st;content:counter(st);position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:30px;height:30px;border-radius:50%;background:var(--grad);color:#1a1020;font:800 14px Sora,sans-serif;display:grid;place-items:center}
+.step svg{width:34px;height:34px;color:var(--a4);stroke-width:1.7;margin-bottom:8px}
+.step b{display:block;font-family:Sora,sans-serif;margin-bottom:2px}
+.step small{color:var(--muted)}
+.shr{position:absolute;top:10px;right:10px;z-index:2;width:34px;height:34px;border-radius:50%;border:0;background:rgba(10,11,30,.65);backdrop-filter:blur(6px);color:#fff;cursor:pointer;display:grid;place-items:center;transition:.25s}
+.shr svg{width:16px;height:16px;stroke-width:2}
+.shr:hover,.shr.ok{background:var(--grad);color:#1a1020}
+.exp{font-size:12px;color:var(--a2)}
+.flinks{display:flex;gap:18px;justify-content:center;margin-bottom:10px;flex-wrap:wrap}
+.flinks a{color:var(--text);font-weight:500}.flinks a:hover{color:var(--a2)}
+.pg{display:none;max-width:780px;margin:30px auto 50px;padding:30px;border-radius:24px;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(10px)}
+.pg.active{display:block;animation:fade .5s both}
+.pg h1{font-size:32px;margin-bottom:14px}.pg h2{font-size:19px;margin:20px 0 6px}.pg p,.pg li{color:var(--muted);margin-bottom:8px}.pg ul{padding-left:20px}.pg a{color:var(--a2);text-decoration:underline}
+body.pgview main>:not(#pages){display:none}
+body.catpage .steps{display:none}
+.ck{position:fixed;left:14px;bottom:14px;z-index:90;max-width:470px;display:none;gap:12px;align-items:center;padding:12px 16px;border-radius:16px;border:1px solid var(--line);background:rgba(16,17,40,.94);backdrop-filter:blur(10px);font-size:12.5px;color:var(--muted)}
+.ck.show{display:flex}
+.ck button{flex:none;padding:8px 16px;border:0;border-radius:999px;background:var(--grad);font-weight:700;cursor:pointer}
+.ck a{color:var(--a2);text-decoration:underline}
+.totop{position:fixed;right:18px;bottom:76px;z-index:50;width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:rgba(16,17,40,.9);color:var(--text);font-size:20px;cursor:pointer;display:none}
+.totop.show{display:block}.totop:hover{background:var(--grad);color:#1a1020}
+@media(max-width:760px){.steps{grid-template-columns:1fr}.ck{right:14px;bottom:76px}}
 .hp{display:none}
 .rv{padding:12px;border-radius:12px;background:rgba(255,255,255,.06);margin-bottom:8px;font-size:14px}
 .rv .st{color:var(--a2)}
@@ -127,6 +171,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
 </style>
 </head>
 <body>
+<div class="bg" aria-hidden="true"><i></i><i></i><i></i></div>
 
 <div class="notice">Affiliate disclosure: some links on this site are affiliate links. If you buy through them we may earn a commission at no extra cost to you.</div>
 
@@ -153,8 +198,41 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
     </div>
   </div>
   <div class="tiles" id="tiles"></div>
+  <div class="steps">
+    <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><b>Pick a deal</b><small>Browse a category or search a brand.</small></div>
+    <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></svg><b>Copy the code</b><small>Tap the dashed button to copy the coupon.</small></div>
+    <div class="step"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 4h2l2 12h11l2-8H7"/><circle cx="9" cy="20" r="1.3"/><circle cx="17" cy="20" r="1.3"/></svg><b>Save at checkout</b><small>Open the store and paste the code.</small></div>
+  </div>
   <div id="sections"></div>
   <div class="none" id="none">No deals match your search.</div>
+
+  <div id="pages">
+    <article class="pg" id="pg-about"><h1>About Global Deals Hub</h1>
+      <p>Global Deals Hub is a small, independent site that collects online deals and coupon codes in one place, so you do not have to search store by store.</p>
+      <h2>How we pick deals</h2><p>We hand-pick offers from stores and partner programs, check that the link works, and remove offers that have ended.</p>
+      <h2>How we earn money</h2><p>Some links are affiliate links. If you buy through them we may earn a commission at no extra cost to you. This helps keep the site free.</p>
+      <h2>Questions?</h2><p>Visit our <a href="#page/contact">Contact page</a>.</p></article>
+    <article class="pg" id="pg-contact"><h1>Contact us</h1>
+      <p>Questions, a broken link or a deal to suggest? Send us a message and we will answer as soon as we can.</p>
+      <form class="f" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact">
+        <p class="hp"><label>Leave empty <input name="bot-field"></label></p>
+        <input name="name" placeholder="Your name" required>
+        <input type="email" name="email" placeholder="Your email" required>
+        <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+        <button type="submit">Send message</button>
+      </form></article>
+    <article class="pg" id="pg-privacy"><h1>Privacy Policy</h1><p>Last updated: October 2026</p>
+      <h2>Who we are</h2><p>Global Deals Hub is a deals and coupon website.</p>
+      <h2>What we collect</h2>
+      <ul><li>Email address and/or phone number, only if you subscribe to our deal alerts.</li><li>Name, rating and message, if you send a review or contact us.</li></ul>
+      <p>Forms are processed through our hosting provider, Netlify.</p>
+      <h2>How we use it</h2><p>We use your details only to send the deals you asked for and to answer your messages. We never sell your data. You can ask us to stop at any time.</p>
+      <h2>Affiliate links</h2><p>Some links are affiliate links. We may earn a commission if you buy, at no extra cost to you.</p>
+      <h2>Cookies and storage</h2><p>This site uses very little browser storage (for example, to remember that you closed a popup). Third-party shops and social networks you open from our links may set their own cookies.</p>
+      <h2>Your rights</h2><p>You can ask to see, correct or delete your data through our <a href="#page/contact">Contact page</a>.</p></article>
+  </div>
+
 
   <div class="band" id="follow">
     <h2>Follow us for daily deals</h2>
@@ -194,7 +272,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <input type="tel" name="phone" placeholder="Phone number (optional if you add an email)">
       <label class="c"><input type="checkbox" name="consent_sms"> I agree to receive text messages with deals at this number. Message and data rates may apply. Reply STOP to opt out.</label>
       <button type="submit">Subscribe</button>
-      <small style="color:var(--muted)">We use your details only to send you deals. We never sell them. See our privacy policy.</small>
+      <small style="color:var(--muted)">We use your details only to send you deals. We never sell them. See our <a href="#page/privacy" style="text-decoration:underline">privacy policy</a>.</small>
     </form>
     </div>
   </div>
@@ -207,10 +285,12 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
   <div id="subSlot"></div>
 </div>
 </div>
+<div class="ck" id="ck"><span>This site uses minimal storage and links to third-party shops that may use cookies. <a href="#page/privacy">Learn more</a></span><button id="ckOk" type="button">OK</button></div>
+<button class="totop" id="toTop" type="button" aria-label="Back to top">&uarr;</button>
 <button class="fab" id="subFab" type="button">🔔 Get deals</button>
 
 <footer>
-  <div class="wrap">&copy; 2026 Global Deals Hub. Prices and availability may change; check the store for the final price.<br>
+  <div class="wrap"><div class="flinks"><a href="#page/about">About</a><a href="#page/contact">Contact</a><a href="#page/privacy">Privacy Policy</a></div>&copy; 2026 Global Deals Hub. Prices and availability may change; check the store for the final price.<br>
   We are not the store. We link to third-party shops and may earn commissions from qualifying purchases.</div>
 </footer>
 
@@ -246,14 +326,41 @@ const SOCIAL = [
 document.getElementById("social").innerHTML = SOCIAL.filter(x => x.link).map(x =>
   `<a class="${x.cls}" href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.name)}</a>`).join("");
 
+const ICON_PATHS = {
+  electronics:'<rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/>',
+  fashion:'<path d="M8 3 3 6l2 4 3-1v11h8V9l3 1 2-4-5-3a4 4 0 0 1-8 0z"/>',
+  accessories:'<path d="M6 8h12l1 13H5z"/><path d="M9 8a3 3 0 0 1 6 0"/>',
+  jewelry:'<path d="M6 3h12l4 6-10 12L2 9z"/><path d="M2 9h20M9 3l3 6 3-6M12 21 9 9m3 12 3-12"/>',
+  home:'<path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M10 20v-6h4v6"/>',
+  beauty:'<path d="M12 21s-8-5-8-11a4.5 4.5 0 0 1 8-3 4.5 4.5 0 0 1 8 3c0 6-8 11-8 11z"/>',
+  sports:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6c3 3 3 9.8 0 12.8M18.4 5.6c-3 3-3 9.8 0 12.8"/>',
+  toys:'<rect x="4" y="9" width="16" height="12" rx="2"/><path d="M12 9v12M4 14h16M12 9c-3-5-7-3-5 0M12 9c3-5 7-3 5 0"/>',
+  top:'<path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/>'
+};
+const ico = id => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor">${ICON_PATHS[id] || ""}</svg>`;
+const SHARE_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.6 13.5 6.8 4M15.4 6.5l-6.8 4"/></svg>';
+const expired = o => { if(!o.expires) return false; const t = String(o.expires); const d = new Date(t.length <= 10 ? t + "T23:59:59" : t); return !isNaN(d) && d < new Date(); };
+const fmtDate = t => { t = String(t); const d = new Date(t.length <= 10 ? t + "T00:00:00" : t); return isNaN(d) ? t : d.toLocaleDateString("en", {month:"short", day:"numeric"}); };
+
+function topSection(){
+  const all = [].concat(...CATEGORIES.map(c => (OFFERS[c.id] || []).map(o => Object.assign({}, o, {_i:c.icon}))));
+  const top = all.filter(o => o.badge || o.coupon).sort((a, b) => (b.badge ? 1 : 0) - (a.badge ? 1 : 0)).slice(0, 10);
+  if(!top.length) return "";
+  return `<section id="top"><div class="sh"><h2><span class="hi">${ico("top")}</span>Top Deals</h2><small>Best picks right now</small><span class="sp"></span>
+    <button class="ar" data-dir="-1" aria-label="Scroll left">&#8249;</button><button class="ar" data-dir="1" aria-label="Scroll right">&#8250;</button></div>
+    <div class="row">${top.map(o => offerCard(o, o._i)).join("")}</div></section>`;
+}
+
 function offerCard(o, icon){
   const img = o.image ? `<img src="${esc(o.image)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode('${icon}'))">` : icon;
   return `<article class="card" data-s="${esc(((o.title||"")+" "+(o.coupon||"")).toLowerCase())}">
     <div class="img">${img}</div>
+    <button class="shr" data-t="${esc(o.title)}" aria-label="Share" title="Share">${SHARE_SVG}</button>
     <div class="body">
       <div class="title">${esc(o.title)}</div>
       <div class="price">${o.price ? `<b>${esc(o.price)}</b>` : ""}${o.oldPrice ? `<s>${esc(o.oldPrice)}</s>` : ""}${o.badge ? `<span class="badge">${esc(o.badge)}</span>` : ""}</div>
       ${o.coupon ? `<button class="coupon" data-code="${esc(o.coupon)}">Copy code: ${esc(o.coupon)}</button>` : ""}
+      ${o.expires ? `<div class="exp">Valid until ${esc(fmtDate(o.expires))}</div>` : ""}
       <a class="cta" href="${esc(o.link || "#")}" target="_blank" rel="sponsored noopener">Get this deal &rarr;</a>
     </div>
   </article>`;
@@ -261,15 +368,15 @@ function offerCard(o, icon){
 const emptyCard = () => `<div class="card empty" data-empty="1"><div><b>＋</b>Your offer here</div></div>`;
 
 function render(){
-  document.getElementById("nav").innerHTML = CATEGORIES.map(c => `<a href="#${c.id}">${c.icon} ${esc(c.name)}</a>`).join("");
-  document.getElementById("tiles").innerHTML = CATEGORIES.map(c => `<a class="tile" href="#${c.id}"><b>${c.icon}</b>${esc(c.name)}</a>`).join("");
-  document.getElementById("sections").innerHTML = CATEGORIES.map(c => {
+  document.getElementById("nav").innerHTML = CATEGORIES.map(c => `<a href="#${c.id}"><span class="ni">${ico(c.id)}</span>${esc(c.name)}</a>`).join("");
+  document.getElementById("tiles").innerHTML = CATEGORIES.map(c => `<a class="tile" href="#${c.id}"><b class="ti">${ico(c.id)}</b>${esc(c.name)}</a>`).join("");
+  document.getElementById("sections").innerHTML = topSection() + CATEGORIES.map(c => {
     const list = OFFERS[c.id] || [];
     const total = Math.max(SLOTS_PER_CATEGORY, list.length);
     let html = "";
     for(let i = 0; i < total; i++) html += list[i] ? offerCard(list[i], c.icon) : emptyCard();
     return `<section id="${c.id}">
-      <div class="sh"><h2>${c.icon} ${esc(c.name)}</h2><small>${list.length} offer${list.length === 1 ? "" : "s"}</small><span class="sp"></span>
+      <div class="sh"><h2><span class="hi">${ico(c.id)}</span>${esc(c.name)}</h2><small>${list.length} offer${list.length === 1 ? "" : "s"}</small><span class="sp"></span>
         <button class="ar" data-dir="-1" aria-label="Scroll left">&#8249;</button><button class="ar" data-dir="1" aria-label="Scroll right">&#8250;</button>
         ${list.length ? `<a class="more" href="#cat/${c.id}">See all &rarr;</a>` : ""}<a class="back" href="#">&larr; All deals</a></div>
       <div class="row">${html}</div>
@@ -285,15 +392,18 @@ function count(el, to){
 }
 
 function route(){
-  const m = location.hash.match(/^#cat\/(\w+)/);
+  const m = location.hash.match(/^#cat\/(\w+)/), pg = location.hash.match(/^#page\/(\w+)/);
   document.body.classList.toggle("catpage", !!m);
+  document.body.classList.toggle("pgview", !!pg);
   document.querySelectorAll("section").forEach(sec => {
     const on = !!m && sec.id === m[1];
     sec.classList.toggle("active", on);
     if(on) sec.classList.add("in");
   });
-  if(m) window.scrollTo(0, 0);
+  document.querySelectorAll(".pg").forEach(p => p.classList.toggle("active", !!pg && p.id === "pg-" + pg[1]));
+  if(m || pg) window.scrollTo(0, 0);
 }
+window.addEventListener("hashchange", () => document.getElementById("subModal").classList.remove("show"));
 window.addEventListener("hashchange", route);
 render(); route();
 document.getElementById("st2").textContent = CATEGORIES.length;
@@ -302,7 +412,7 @@ fetch("data/offers.json?v=" + Date.now())
   .then(data => {
     const list = Array.isArray(data) ? data : (data.offers || []);
     const g = {}; CATEGORIES.forEach(c => g[c.id] = []);
-    list.forEach(o => { if(o && g[o.category]) g[o.category].push(o); });
+    list.forEach(o => { if(o && g[o.category] && !expired(o)) g[o.category].push(o); });
     OFFERS = g; render(); route();
     count(document.getElementById("st1"), list.length);
   })
@@ -311,6 +421,13 @@ fetch("data/offers.json?v=" + Date.now())
 document.addEventListener("click", e => {
   const ar = e.target.closest(".ar");
   if(ar){ const row = ar.closest("section").querySelector(".row"); row.scrollBy({left: ar.dataset.dir * 540, behavior:"smooth"}); return; }
+  const sh = e.target.closest(".shr");
+  if(sh){
+    const url = location.href.split("#")[0], t = sh.dataset.t;
+    if(navigator.share) navigator.share({title:t, text:t, url}).catch(() => {});
+    else if(navigator.clipboard) navigator.clipboard.writeText(t + " - " + url).then(() => { sh.classList.add("ok"); setTimeout(() => sh.classList.remove("ok"), 1500); });
+    return;
+  }
   const b = e.target.closest(".coupon");
   if(!b) return;
   const code = b.dataset.code;
@@ -323,6 +440,7 @@ document.getElementById("q").addEventListener("input", e => {
   const q = e.target.value.trim().toLowerCase();
   let shown = 0;
   document.querySelectorAll("section").forEach(sec => {
+    if(sec.id === "top"){ sec.style.display = q ? "none" : ""; return; }
     let secShown = 0;
     sec.querySelectorAll(".card").forEach(card => {
       const isEmpty = card.dataset.empty === "1";
@@ -383,6 +501,16 @@ document.addEventListener("submit", e => {
     try{ if(sessionStorage.getItem("subShown")) return; sessionStorage.setItem("subShown","1"); }catch(_){}
     open();
   }, 4000);
+})();
+
+/* Cookie notice + back to top */
+(function(){
+  const ck = document.getElementById("ck");
+  try{ if(!localStorage.getItem("ckOk")) ck.classList.add("show"); }catch(_){ ck.classList.add("show"); }
+  document.getElementById("ckOk").addEventListener("click", () => { ck.classList.remove("show"); try{ localStorage.setItem("ckOk", "1"); }catch(_){} });
+  const up = document.getElementById("toTop");
+  window.addEventListener("scroll", () => up.classList.toggle("show", window.scrollY > 700), {passive:true});
+  up.addEventListener("click", () => window.scrollTo({top:0, behavior:"smooth"}));
 })();
 </script>
 </body>
