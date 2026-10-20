@@ -58,18 +58,24 @@ section.in{opacity:1;transform:none}
 .sh .sp{flex:1}
 .ar{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:18px;cursor:pointer;transition:.25s}
 .ar:hover{background:var(--grad);color:#1a1020;border-color:transparent}
-.more{padding:9px 18px;border-radius:999px;border:0;background:var(--grad);color:#1a1020;font-weight:600;font-size:13.5px;cursor:pointer;transition:.25s}
+.more,.back{display:inline-block;padding:9px 18px;border-radius:999px;border:0;background:var(--grad);color:#1a1020;font-weight:600;font-size:13.5px;cursor:pointer;transition:.25s}
 .more:hover{transform:translateY(-2px);box-shadow:0 8px 20px -6px rgba(255,90,31,.6)}
 .row{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 4px 18px;scrollbar-width:thin;scrollbar-color:var(--a3) transparent}
 .row::-webkit-scrollbar{height:6px}.row::-webkit-scrollbar-thumb{background:var(--a3);border-radius:6px}
-section.open .row{flex-wrap:wrap;overflow:visible}
-section.open .ar{display:none}
+.back{display:none;background:var(--card);color:var(--text);border:1px solid var(--line)}
+body.catpage .hero,body.catpage .tiles,body.catpage #follow,body.catpage .two{display:none}
+body.catpage section:not(.active){display:none}
+body.catpage section.active{opacity:1;transform:none;margin-top:28px}
+body.catpage section.active .row{flex-wrap:wrap;overflow:visible}
+body.catpage .ar,body.catpage .more{display:none}
+body.catpage .back{display:inline-block}
+body.catpage .sh h2{font-size:30px}
 .card{position:relative;flex:0 0 255px;scroll-snap-align:start;border-radius:20px;border:1px solid var(--line);background:var(--card);backdrop-filter:blur(8px);overflow:hidden;display:flex;flex-direction:column;transition:.35s}
 .card:not(.empty):hover{transform:translateY(-8px);border-color:rgba(255,183,3,.6);box-shadow:0 20px 40px -14px rgba(124,92,255,.6)}
 .card .img{height:160px;display:flex;align-items:center;justify-content:center;font-size:46px;background:linear-gradient(135deg,rgba(124,92,255,.25),rgba(255,90,31,.2));overflow:hidden}
 .card .img img{width:100%;height:100%;object-fit:cover;transition:.5s}
 .card:hover .img img{transform:scale(1.08)}
-.badge{position:absolute;top:12px;left:12px;z-index:2;padding:4px 11px;border-radius:999px;background:linear-gradient(120deg,#ff3d71,#ff5a1f);color:#fff;font-size:12px;font-weight:700;animation:pulse 2s infinite}
+.badge{display:inline-block;margin-left:8px;padding:3px 10px;border-radius:999px;background:linear-gradient(120deg,#ff3d71,#ff5a1f);color:#fff;font-size:11.5px;font-weight:700;vertical-align:middle;animation:pulse 2s infinite}
 @keyframes pulse{50%{box-shadow:0 0 0 7px rgba(255,90,31,0)}0%{box-shadow:0 0 0 0 rgba(255,90,31,.6)}}
 .body{padding:14px;display:flex;flex-direction:column;gap:10px;flex:1}
 .title{font-weight:600;font-size:14.5px;line-height:1.35;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:39px}
@@ -90,7 +96,7 @@ section.open .ar{display:none}
 .social{display:flex;gap:10px;flex-wrap:wrap}
 .social a{padding:10px 20px;border-radius:999px;font-weight:600;font-size:14px;color:#fff;transition:.25s}
 .social a:hover{transform:translateY(-4px) scale(1.05)}
-.s-fb{background:#1877f2}.s-ig{background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)}.s-tg{background:#229ed9}.s-pin{background:#e60023}
+.s-tt{background:#111;box-shadow:-2px -2px 0 #25f4ee,2px 2px 0 #fe2c55}.s-vk{background:#0077ff}.s-wa{background:#25d366}.s-fb{background:#1877f2}.s-ig{background:linear-gradient(45deg,#f09433,#dc2743,#bc1888)}.s-tg{background:#229ed9}.s-pin{background:#e60023}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:24px}
 .f{display:grid;gap:10px;margin-top:14px}
 .f input:not([type=checkbox]),.f select,.f textarea{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.07);color:var(--text);font:inherit;outline:none}
@@ -140,12 +146,7 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
   <div class="band" id="follow">
     <h2>Follow us for daily deals</h2>
     <p>Get new offers and coupon codes first.</p>
-    <div class="social">
-      <a class="s-fb" href="#" target="_blank" rel="noopener">Facebook</a>
-      <a class="s-ig" href="#" target="_blank" rel="noopener">Instagram</a>
-      <a class="s-tg" href="#" target="_blank" rel="noopener">Telegram</a>
-      <a class="s-pin" href="#" target="_blank" rel="noopener">Pinterest</a>
-    </div>
+    <div class="social" id="social"></div>
   </div>
 
   <div class="two">
@@ -206,14 +207,29 @@ let OFFERS = {};
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
+/* ============================================================
+   SOCIAL LINKS: replace each link with your own page/group.
+   Leave "" (empty) to hide a button.
+   ============================================================ */
+const SOCIAL = [
+  {cls:"s-fb",  name:"Facebook",  link:"https://www.facebook.com/YOUR_PAGE"},
+  {cls:"s-ig",  name:"Instagram", link:"https://www.instagram.com/YOUR_ACCOUNT"},
+  {cls:"s-tt",  name:"TikTok",    link:"https://www.tiktok.com/@YOUR_ACCOUNT"},
+  {cls:"s-pin", name:"Pinterest", link:"https://www.pinterest.com/yolagh96/"},
+  {cls:"s-vk",  name:"VK",        link:"https://vk.com/YOUR_PAGE"},
+  {cls:"s-wa",  name:"WhatsApp Group", link:"https://chat.whatsapp.com/YOUR_GROUP_CODE"},
+  {cls:"s-tg",  name:"Telegram",  link:"https://t.me/YOUR_CHANNEL"}
+];
+document.getElementById("social").innerHTML = SOCIAL.filter(x => x.link).map(x =>
+  `<a class="${x.cls}" href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.name)}</a>`).join("");
+
 function offerCard(o, icon){
   const img = o.image ? `<img src="${esc(o.image)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.replaceWith(document.createTextNode('${icon}'))">` : icon;
   return `<article class="card" data-s="${esc(((o.title||"")+" "+(o.coupon||"")).toLowerCase())}">
-    ${o.badge ? `<span class="badge">${esc(o.badge)}</span>` : ""}
     <div class="img">${img}</div>
     <div class="body">
       <div class="title">${esc(o.title)}</div>
-      <div class="price">${o.price ? `<b>${esc(o.price)}</b>` : ""}${o.oldPrice ? `<s>${esc(o.oldPrice)}</s>` : ""}</div>
+      <div class="price">${o.price ? `<b>${esc(o.price)}</b>` : ""}${o.oldPrice ? `<s>${esc(o.oldPrice)}</s>` : ""}${o.badge ? `<span class="badge">${esc(o.badge)}</span>` : ""}</div>
       ${o.coupon ? `<button class="coupon" data-code="${esc(o.coupon)}">Copy code: ${esc(o.coupon)}</button>` : ""}
       <a class="cta" href="${esc(o.link || "#")}" target="_blank" rel="sponsored noopener">Get this deal &rarr;</a>
     </div>
@@ -232,7 +248,7 @@ function render(){
     return `<section id="${c.id}">
       <div class="sh"><h2>${c.icon} ${esc(c.name)}</h2><small>${list.length} offer${list.length === 1 ? "" : "s"}</small><span class="sp"></span>
         <button class="ar" data-dir="-1" aria-label="Scroll left">&#8249;</button><button class="ar" data-dir="1" aria-label="Scroll right">&#8250;</button>
-        ${list.length > 3 ? `<button class="more">See more</button>` : ""}</div>
+        ${list.length ? `<a class="more" href="#cat/${c.id}">See all &rarr;</a>` : ""}<a class="back" href="#">&larr; All deals</a></div>
       <div class="row">${html}</div>
     </section>`;
   }).join("");
@@ -245,7 +261,18 @@ function count(el, to){
   (function step(t){ const p = Math.min(1, (t - t0) / 1200); el.textContent = Math.round(to * p); if(p < 1) requestAnimationFrame(step); })(t0);
 }
 
-render();
+function route(){
+  const m = location.hash.match(/^#cat\/(\w+)/);
+  document.body.classList.toggle("catpage", !!m);
+  document.querySelectorAll("section").forEach(sec => {
+    const on = !!m && sec.id === m[1];
+    sec.classList.toggle("active", on);
+    if(on) sec.classList.add("in");
+  });
+  if(m) window.scrollTo(0, 0);
+}
+window.addEventListener("hashchange", route);
+render(); route();
 document.getElementById("st2").textContent = CATEGORIES.length;
 fetch("data/offers.json?v=" + Date.now())
   .then(r => r.json())
@@ -253,7 +280,7 @@ fetch("data/offers.json?v=" + Date.now())
     const list = Array.isArray(data) ? data : (data.offers || []);
     const g = {}; CATEGORIES.forEach(c => g[c.id] = []);
     list.forEach(o => { if(o && g[o.category]) g[o.category].push(o); });
-    OFFERS = g; render();
+    OFFERS = g; render(); route();
     count(document.getElementById("st1"), list.length);
   })
   .catch(err => console.error("Could not load offers.json", err));
@@ -261,8 +288,6 @@ fetch("data/offers.json?v=" + Date.now())
 document.addEventListener("click", e => {
   const ar = e.target.closest(".ar");
   if(ar){ const row = ar.closest("section").querySelector(".row"); row.scrollBy({left: ar.dataset.dir * 540, behavior:"smooth"}); return; }
-  const more = e.target.closest(".more");
-  if(more){ const s = more.closest("section"); s.classList.toggle("open"); more.textContent = s.classList.contains("open") ? "Show less" : "See more"; return; }
   const b = e.target.closest(".coupon");
   if(!b) return;
   const code = b.dataset.code;
@@ -283,8 +308,6 @@ document.getElementById("q").addEventListener("input", e => {
       if(ok && !isEmpty) secShown++;
     });
     sec.style.display = (q && !secShown) ? "none" : "";
-    sec.classList.toggle("search-open", !!q);
-    if(q) sec.classList.add("open"); else if(!sec.querySelector(".more") || sec.querySelector(".more").textContent === "See more") sec.classList.remove("open");
     shown += secShown;
   });
   document.getElementById("none").style.display = (q && !shown) ? "block" : "none";
