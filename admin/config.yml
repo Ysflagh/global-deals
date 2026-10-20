@@ -35,3 +35,20 @@ collections:
               - { label: Coupon code, name: coupon, widget: string, required: false }
               - { label: Badge (ex 20% OFF), name: badge, widget: string, required: false }
               - { label: Affiliate link, name: link, widget: string }
+
+  - name: reviews
+    label: Reviews
+    files:
+      - name: reviews
+        label: All reviews
+        file: data/reviews.json
+        fields:
+          - label: Reviews
+            name: reviews
+            widget: list
+            summary: "{{fields.name}} - {{fields.rating}} stars"
+            fields:
+              - { label: First name, name: name, widget: string }
+              - { label: Rating (1 to 5), name: rating, widget: number, value_type: int, min: 1, max: 5, default: 5 }
+              - { label: Review, name: text, widget: text }
+              - { label: Date (ex Oct 2026), name: date, widget: string, required: false }
