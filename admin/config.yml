@@ -34,6 +34,7 @@ collections:
               - { label: Old price, name: oldPrice, widget: string, required: false }
               - { label: Coupon code, name: coupon, widget: string, required: false }
               - { label: Badge (ex 20% OFF), name: badge, widget: string, required: false }
+              - { label: Valid until (optional), name: expires, widget: datetime, date_format: "YYYY-MM-DD", time_format: false, format: "YYYY-MM-DD", required: false }
               - { label: Affiliate link, name: link, widget: string }
 
   - name: reviews
