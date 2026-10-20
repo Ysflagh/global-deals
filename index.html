@@ -175,9 +175,9 @@ footer{border-top:1px solid var(--line);padding:28px 0;text-align:center;color:v
       <form class="f" name="newsletter" method="POST" data-netlify="true" netlify-honeypot="bot-field">
         <input type="hidden" name="form-name" value="newsletter">
         <p class="hp"><label>Leave empty <input name="bot-field"></label></p>
-        <input type="email" name="email" placeholder="Your email" required>
-        <label class="c"><input type="checkbox" name="consent_email" required> I agree to receive deal emails and I can unsubscribe at any time.</label>
-        <input type="tel" name="phone" placeholder="Phone (optional, for text alerts)">
+        <input type="email" name="email" placeholder="Your email (optional if you add a phone)">
+        <label class="c"><input type="checkbox" name="consent_email"> I agree to receive deal emails and I can unsubscribe at any time.</label>
+        <input type="tel" name="phone" placeholder="Phone number (optional if you add an email)">
         <label class="c"><input type="checkbox" name="consent_sms"> I agree to receive text messages with deals at this number. Message and data rates may apply. Reply STOP to opt out.</label>
         <button type="submit">Subscribe</button>
         <small style="color:var(--muted)">We use your details only to send you deals. We never sell them. See our privacy policy.</small>
@@ -215,7 +215,7 @@ const SOCIAL = [
   {cls:"s-fb",  name:"Facebook",  link:"https://www.facebook.com/YOUR_PAGE"},
   {cls:"s-ig",  name:"Instagram", link:"https://www.instagram.com/YOUR_ACCOUNT"},
   {cls:"s-tt",  name:"TikTok",    link:"https://www.tiktok.com/@YOUR_ACCOUNT"},
-  {cls:"s-pin", name:"Pinterest", link:"https://www.pinterest.com/yolagh96/"},
+  {cls:"s-pin", name:"Pinterest", link:"https://www.pinterest.com/YOUR_PINTEREST_NAME/"},
   {cls:"s-vk",  name:"VK",        link:"https://vk.com/YOUR_PAGE"},
   {cls:"s-wa",  name:"WhatsApp Group", link:"https://chat.whatsapp.com/YOUR_GROUP_CODE"},
   {cls:"s-tg",  name:"Telegram",  link:"https://t.me/YOUR_CHANNEL"}
@@ -321,6 +321,19 @@ const REVIEWS = [
   el.innerHTML = REVIEWS.length
     ? REVIEWS.map(r => `<div class="rv"><div class="st">${"★".repeat(r.rating)}${"☆".repeat(5-r.rating)}</div><div>${esc(r.text)}</div><small>${esc(r.name)} · ${esc(r.date||"")}</small></div>`).join("")
     : `<div class="rv"><small>No reviews yet. Be the first to share your experience.</small></div>`;
+})();
+
+/* Newsletter: email OR phone is enough */
+(function(){
+  const nf = document.forms.newsletter;
+  nf.addEventListener("submit", e => {
+    const em = nf.email.value.trim(), ph = nf.phone.value.trim();
+    let msg = "";
+    if(!em && !ph) msg = "Please enter an email or a phone number.";
+    else if(em && !nf.consent_email.checked) msg = "Please tick the email consent box.";
+    else if(ph && !nf.consent_sms.checked) msg = "Please tick the text message consent box.";
+    if(msg){ e.preventDefault(); alert(msg); }
+  });
 })();
 </script>
 </body>
